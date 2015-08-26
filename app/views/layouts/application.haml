@@ -1,0 +1,14 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %title ThoughtStream
+    = stylesheet_link_tag    'application', media: 'all', data: { turbolinks_track: true }
+    = javascript_include_tag 'application', data: { turbolinks_track: true }
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+    = csrf_meta_tags
+  %body{style: "#{params[:controller]} #{params[:controller]}-#{params[:action]}"}
+    = render 'layouts/navigation'
+
+    .container.main-content-area
+      = yield
