@@ -1,0 +1,10 @@
+.list-group-item.thought{data: { thought_id: thought.id }}
+  %i.pull-right{style: 'opacity: 0.5; font-size: 0.7em'}
+    = time_ago_in_words(thought.created_at)
+    ago
+  %h4.list-group-item-heading
+    %a{href: user_path(thought.user.handle)}
+      = precede '~' do
+        = thought.user.handle
+  .list-group-item-text
+    = annotate_mentions thought.message

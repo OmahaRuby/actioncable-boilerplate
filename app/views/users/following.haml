@@ -1,0 +1,8 @@
+.page-header
+  %h1
+    Users followed by
+    = user.handle
+
+.list-group
+  - users.order(:handle).find_each do |user|
+    = render 'users/user', user: user

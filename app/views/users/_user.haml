@@ -1,0 +1,7 @@
+.list-group-item{href: user_path(user.handle)}
+  .pull-right
+    = render 'follows/button', user: user
+  %h4.list-group-item-heading
+    %a{href: user_path(user.handle)}
+      = precede '~' do
+        = user.handle

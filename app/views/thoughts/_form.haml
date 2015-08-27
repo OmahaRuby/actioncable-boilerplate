@@ -1,0 +1,5 @@
+= form_for thought do |f|
+  .input-group
+    = f.text_field :message, placeholder: 'What are you thinking?', maxlength: 128, class: 'form-control input-sm'
+    %span.input-group-btn
+      = f.submit 'Think', class: 'btn btn-primary btn-sm'

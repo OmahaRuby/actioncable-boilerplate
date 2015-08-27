@@ -1,0 +1,6 @@
+.page-header
+  %h1 Great Thinkers
+
+.list-group
+  - users.order(:handle).each do |user|
+    = render 'users/user', user: user

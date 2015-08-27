@@ -1,0 +1,12 @@
+.page-header
+  %h1 ThoughtStream
+
+- if thoughts.count > 0
+  - thoughts.includes(:user).limit(25).order(created_at: :desc).each do |thought|
+    = render 'thoughts/thought', thought: thought
+- else
+  %p
+    Oops! There are no thoughts to display. Try
+    %a{ href: users_path }<
+      following
+    some more great thinkers.

@@ -1,0 +1,42 @@
+.page-header
+  .pull-right
+    = render 'follows/button', user: user
+
+  %h1
+    = succeed "'s Stream" do
+      = user.handle
+
+.row
+  .col-md-4
+    .row
+      .col-md-6
+        %a{href: user_followers_path(user.handle)}
+          %b Followers
+      .col-md-6
+        %a{href: user_followers_path(user.handle)}
+          = user.followers.count
+
+    .row
+      .col-md-6
+        %a{href: user_following_path(user.handle)}
+          %b Following
+      .col-md-6
+        %a{href:  user_following_path(user.handle)}
+          = user.following.count
+
+    .row
+      .col-md-6
+        %b Thoughts
+      .col-md-6
+        = user.thoughts.count
+
+  .col-md-8
+    - if user == current_user
+      .panel.panel-default
+        .panel-body.new-thought
+          = render 'thoughts/form', thought: Thought.new
+
+    - if user.related_thoughts.count > 0
+      .list-group.thoughts-list
+        = user.related_thoughts.includes(:user).order(created_at: :desc).find_each do |thought|
+          = render 'thoughts/thought', thought: thought

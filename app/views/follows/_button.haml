@@ -1,0 +1,9 @@
+- if current_user && current_user != user
+  - follow = current_user.follows_as_follower.find_or_initialize_by(followed: user)
+  .follow-button
+    - if follow.new_record?
+      = form_for follow do |f|
+        = f.hidden_field :followed_id
+        = f.submit 'Follow', class: 'btn btn-primary btn-xs'
+    - else
+      = link_to 'Unfollow', follow_path(follow), method: :delete, class: 'btn btn-primary btn-xs'
