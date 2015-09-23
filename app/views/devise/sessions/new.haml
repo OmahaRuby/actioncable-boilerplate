@@ -3,7 +3,7 @@
     .panel-heading
       %h3.panel-title Sign In
     .panel-body
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name), authenticity_token: true) do |f|
         %fieldset
           .form-group
             = f.email_field :email, placeholder: 'E-mail', class: 'form-control', autofocus: true

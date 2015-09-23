@@ -1,4 +1,4 @@
-= form_for thought do |f|
+= form_for thought, authenticity_token: true do |f|
   .input-group
     = f.text_field :message, placeholder: 'What are you thinking?', maxlength: 128, class: 'form-control input-sm'
     %span.input-group-btn

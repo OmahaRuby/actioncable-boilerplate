@@ -3,7 +3,7 @@
     .panel-heading
       %h3.panel-title Register
     .panel-body
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), authenticity_token: true) do |f|
         %fieldset
           .form-group
             = f.text_field :handle, placeholder: 'Handle', class: 'form-control', autofocus: true

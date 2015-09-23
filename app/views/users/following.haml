@@ -4,5 +4,5 @@
     = user.handle
 
 .list-group
-  - users.order(:handle).find_each do |user|
+  - users.order(:handle).each do |user|
     = render 'users/user', user: user

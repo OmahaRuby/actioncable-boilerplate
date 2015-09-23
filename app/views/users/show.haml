@@ -36,7 +36,4 @@
         .panel-body.new-thought
           = render 'thoughts/form', thought: Thought.new
 
-    - if user.related_thoughts.count > 0
-      .list-group.thoughts-list
-        = user.related_thoughts.includes(:user).order(created_at: :desc).find_each do |thought|
-          = render 'thoughts/thought', thought: thought
+      = render 'thoughts/related_thoughts_list', user: user
