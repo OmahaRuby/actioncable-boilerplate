@@ -8,7 +8,11 @@ class FollowsController < ApplicationController
       flash[:error] = follow.errors.full_messages.to_sentence
     end
 
-    redirect_to :back
+    if request.xhr?
+      render partial: 'button', locals: { user: follow.followed }, change: "follow-button:#{follow.followed_id}"
+    else
+      redirect_to :back
+    end
   end
 
   def destroy
@@ -16,7 +20,11 @@ class FollowsController < ApplicationController
 
     follow.destroy
 
-    redirect_to :back
+    if request.xhr?
+      render partial: 'button', locals: { user: follow.followed }, change: "follow-button:#{follow.followed_id}"
+    else
+      redirect_to :back
+    end
   end
 
   private
