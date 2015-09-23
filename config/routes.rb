@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount ActionCable.server, at: '/action_cable'
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'sessions' }
 
   scope '/~:handle', constraints: { handle: /[a-z][a-z0-9]+/i } do
     get '/', to: 'users#show', as: 'user'
