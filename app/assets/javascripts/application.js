@@ -4,3 +4,4 @@
 //= require bootstrap-sprockets
 //= require cable
 //= require consumer
+//= require_tree .

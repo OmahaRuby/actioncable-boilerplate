@@ -4,6 +4,7 @@ class Thought < ActiveRecord::Base
   belongs_to :user, inverse_of: :thoughts
 
   has_many :mentions, inverse_of: :thought
+  has_many :mentioned_users, through: :mentions, source: :mentioned
 
   validates :user, :message, presence: true
   validates :message, length: { maximum: 128 }
@@ -11,6 +12,8 @@ class Thought < ActiveRecord::Base
   validate :message_has_not_changed, unless: :new_record?
 
   after_save :enumerate_mentions!, on: [:create]
+
+  after_commit { ThoughtRelayJob.perform_later(self) }
 
   private
 

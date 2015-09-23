@@ -3,7 +3,7 @@
     = time_ago_in_words(thought.created_at)
     ago
   %h4.list-group-item-heading
-    %a{href: user_path(thought.user.handle)}
+    %a{href: "/users/#{thought.user.handle}"}
       = precede '~' do
         = thought.user.handle
   .list-group-item-text

@@ -19,6 +19,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'devise'
 
+gem 'render_anywhere'
+
 group :development, :test do
   gem 'jazz_hands', github: 'jkrmr/jazz_hands'
   gem 'pry-rails'
